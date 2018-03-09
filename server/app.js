@@ -6,11 +6,10 @@ const wwwhisper = require('connect-wwwhisper');
 
 const app = express();
 
-
-app.use(wwwhisper(false));
-
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+
+app.use(wwwhisper(false));
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
